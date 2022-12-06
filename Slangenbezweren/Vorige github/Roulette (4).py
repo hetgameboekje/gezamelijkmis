@@ -1,12 +1,29 @@
-import sys 
+import random
 
-print("welkom bij de sinterklaas verlanglijst! Hier kunt u cadeau's invullen dat uw op uw verlanlijst wilt. Als u klaar bent typed u KLAAR!")
+totaalchips = 10
+winchips = 35
+inzet = 1
 
-for x in range(12):
-      cadeau1 = input()
-if cadeau1 == "KLAAR!" :
-        print(cadeau1) 
-        sys.exit()
-else:   print("volgende cadeau")   
+print("je hebt", totaalchips, "chips totaal!")
+print("Je kan 35 chips winnen, Totaal is dit", totaalchips + winchips, "chips")
+print("-=-=-=-=-=-=-=-=-=-=-")
 
+for i in range(totaalchips):
+        rollguess = random.randint(1, 2)
 
+        inzet = int(input('hoeveel chips wil je inzetten? '))
+        if inzet > totaalchips:
+            print("Je hebt niet genoeg chips!")
+            break
+        roll = int(input('Place your bet, 1-36: '))
+        print('-=-=-=-=-=-=-=-=-=-=-')
+        if roll == rollguess:
+                print("Je hebt", inzet, "chips ingezet!")
+                totaalchips = (totaalchips + (winchips*inzet))
+                print("Gefeliciteerd! je succesvol geraden, je hebt", totaalchips, "chips totaal!")
+        else:
+                print("Je hebt", inzet, "chips ingezet!")
+                print("Spel rolde:", rollguess)
+                totaalchips = (totaalchips - inzet)
+                print("je hebt verloren, je hebt", totaalchips, "chips totaal! ")
+                
